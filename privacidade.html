@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de Privacidade — Apex Motors</title>
+  <meta name="description" content="Como a Apex Motors coleta, usa e protege seus dados pessoais, conforme a LGPD.">
+  <meta name="theme-color" content="#0a0a0b">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="privacidade">
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Você está em"><a href="index.html">Início</a><span>/</span><span>Política de Privacidade</span></nav>
+        <h1 class="h-display">Política de Privacidade</h1>
+        <p class="lead">Última atualização: outubro de 2026. Em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018).</p>
+      </div>
+    </section>
+
+    <article class="container prose">
+      <h2>1. Quais dados coletamos</h2>
+      <p>Quando você solicita uma proposta, agenda um test drive ou pede a avaliação do seu carro, coletamos:</p>
+      <ul>
+        <li>Dados de identificação: nome completo, CPF e data de nascimento;</li>
+        <li>Dados de contato: telefone/WhatsApp, e-mail e endereço;</li>
+        <li>Dados da negociação: veículos de interesse, forma de pagamento e informações do carro na troca.</li>
+      </ul>
+      <p>Também usamos o armazenamento local do seu navegador para lembrar os carros salvos na Minha Garagem e os vistos recentemente. Essas informações ficam apenas no seu dispositivo.</p>
+
+      <h2>2. Para que usamos</h2>
+      <ul>
+        <li>Responder à sua proposta e dar continuidade ao atendimento pelo WhatsApp;</li>
+        <li>Realizar a análise de crédito junto às instituições financeiras parceiras, quando você optar por financiamento;</li>
+        <li>Agendar visitas e test drives;</li>
+        <li>Cumprir obrigações legais e fiscais ligadas à compra e venda de veículos.</li>
+      </ul>
+
+      <h2>3. Com quem compartilhamos</h2>
+      <p>Seus dados só são compartilhados com bancos e financeiras parceiras (mediante sua solicitação de financiamento), despachantes para a transferência do veículo e órgãos públicos quando exigido por lei. Não vendemos dados pessoais.</p>
+
+      <h2>4. Por quanto tempo guardamos</h2>
+      <p>Mantemos os dados pelo tempo necessário ao atendimento e pelos prazos exigidos pela legislação. Propostas que não viraram negócio são descartadas em até 12 meses.</p>
+
+      <h2>5. Seus direitos</h2>
+      <p>Você pode, a qualquer momento, pedir acesso, correção, portabilidade ou exclusão dos seus dados, além de revogar o consentimento. Basta escrever para <a id="mail" href="#"></a>.</p>
+
+      <h2>6. Cookies</h2>
+      <p>Usamos cookies essenciais para o funcionamento do site e cookies de medição de audiência, sem identificação pessoal. Você pode desativá-los nas configurações do seu navegador.</p>
+
+      <h2>7. Encarregado de dados (DPO)</h2>
+      <p>Apex Motors · <span id="addr"></span>.</p>
+    </article>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    window.initPage = function () {
+      const mail = document.getElementById("mail");
+      mail.href = `mailto:${STORE.email}`;
+      mail.textContent = STORE.email;
+      document.getElementById("addr").textContent = `${STORE.endereco}, ${STORE.cidade} · CNPJ ${STORE.cnpj}`;
+    };
+  </script>
+</body>
+</html>

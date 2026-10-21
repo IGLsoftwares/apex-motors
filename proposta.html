@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitar proposta — Apex Motors</title>
+  <meta name="description" content="Envie sua proposta e continue o atendimento pelo WhatsApp com tudo já preenchido.">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="proposta">
+  <main class="container">
+    <nav class="crumbs page-crumbs" aria-label="Você está em"><a href="index.html">Início</a><span>/</span><a href="estoque.html">Estoque</a><span>/</span><span>Proposta</span></nav>
+
+    <div class="checkout">
+      <div>
+        <div class="stepper" id="stepper"></div>
+
+        <form class="form-card" id="form" novalidate>
+          <!-- PASSO 1 — Interesse -->
+          <div class="fstep active" data-step="1">
+            <h2>O que você procura?</h2>
+            <p>Escolha o objetivo. Leva menos de 2 minutos e você já chega no WhatsApp com o atendimento adiantado.</p>
+            <div class="fgrid">
+              <div class="opt-cards" id="intencoes"></div>
+              <div class="field" id="no-car-hint" hidden>
+                <div class="notice">Você ainda não escolheu um carro. <a class="u-link" href="estoque.html">Escolher no estoque</a> ou siga só com a avaliação do seu carro.</div>
+              </div>
+              <div class="cond" data-if="intencao=test-drive">
+                <div class="fsub">Agendamento do test drive</div>
+                <div class="field s3"><label for="td-data">Data preferida <em>*</em></label><input class="input" type="date" id="td-data" name="tdData" required><span class="err">Escolha uma data a partir de amanhã.</span></div>
+                <div class="field s3"><label for="td-hora">Período <em>*</em></label>
+                  <select class="select" id="td-hora" name="tdPeriodo" required><option value="">Selecione</option><option>Manhã (9h–12h)</option><option>Tarde (13h–17h)</option><option>Fim de tarde (17h–19h)</option></select><span class="err">Escolha um período.</span></div>
+                <div class="field"><label for="cnh">Possui CNH válida? <em>*</em></label>
+                  <select class="select" id="cnh" name="cnh" required><option value="">Selecione</option><option>Sim, categoria B</option><option>Sim, categoria AB</option></select><span class="err">Para o test drive, é necessário CNH válida.</span><span class="hint">Leve a CNH física ou digital no dia.</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PASSO 2 — Dados pessoais -->
+          <div class="fstep" data-step="2">
+            <h2>Seus dados</h2>
+            <p>Usados só para o atendimento e a análise de crédito. Protegidos pela LGPD.</p>
+            <div class="fgrid">
+              <div class="field"><label for="nome">Nome completo <em>*</em></label><input class="input" id="nome" name="nome" autocomplete="name" required><span class="err">Informe nome e sobrenome.</span></div>
+              <div class="field s3"><label for="cpf">CPF <em>*</em></label><input class="input mono" id="cpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" data-mask="cpf" required><span class="err">CPF inválido.</span></div>
+              <div class="field s3"><label for="nasc">Data de nascimento <em>*</em></label><input class="input mono" id="nasc" name="nasc" inputmode="numeric" placeholder="dd/mm/aaaa" data-mask="date" autocomplete="bday" required><span class="err">Data inválida (é preciso ter 18 anos ou mais).</span></div>
+              <div class="field s3"><label for="tel">WhatsApp <em>*</em></label><input class="input mono" id="tel" name="tel" inputmode="tel" placeholder="(92) 99999-9999" data-mask="phone" autocomplete="tel" required><span class="err">Informe um celular com DDD.</span></div>
+              <div class="field s3"><label for="email">E-mail <em>*</em></label><input class="input" id="email" name="email" type="email" autocomplete="email" required><span class="err">E-mail inválido.</span></div>
+              <div class="fsub">Endereço</div>
+              <div class="field s2"><label for="cep">CEP <em>*</em></label><div class="input-wrap"><input class="input mono" id="cep" name="cep" inputmode="numeric" placeholder="00000-000" data-mask="cep" autocomplete="postal-code" required><span class="spin"></span></div><span class="err">CEP não encontrado.</span><span class="hint">Preenchemos o resto para você.</span></div>
+              <div class="field s4"><label for="rua">Endereço</label><input class="input" id="rua" name="rua" autocomplete="address-line1"></div>
+              <div class="field s2 half-sm"><label for="num">Número</label><input class="input" id="num" name="num"></div>
+              <div class="field s4 half-sm"><label for="bairro">Bairro</label><input class="input" id="bairro" name="bairro"></div>
+              <div class="field s4"><label for="cidade">Cidade</label><input class="input" id="cidade" name="cidade" autocomplete="address-level2"></div>
+              <div class="field s2"><label for="uf">UF</label><input class="input" id="uf" name="uf" maxlength="2" autocomplete="address-level1"></div>
+            </div>
+          </div>
+
+          <!-- PASSO 3 — Pagamento / troca -->
+          <div class="fstep" data-step="3">
+            <h2>Pagamento e troca</h2>
+            <p>Conte como pretende pagar. O consultor monta a melhor condição a partir daqui.</p>
+            <div class="fgrid">
+              <div class="opt-cards" id="pagamentos"></div>
+
+              <div class="cond" data-if="pagamento=financiamento">
+                <div class="fsub">Financiamento</div>
+                <div class="field s2"><label for="fin-entrada">Entrada (R$) <em>*</em></label><input class="input mono" id="fin-entrada" name="finEntrada" inputmode="numeric" data-mask="money" required><span class="err">Entrada mínima de 20%.</span></div>
+                <div class="field s2"><label for="fin-prazo">Prazo</label><select class="select" id="fin-prazo" name="finPrazo"><option>12</option><option>24</option><option>36</option><option selected>48</option><option>60</option></select></div>
+                <div class="field s2"><label for="renda">Renda mensal</label><select class="select" id="renda" name="renda"><option value="">Prefiro não informar</option><option>Até R$ 20 mil</option><option>R$ 20 a 50 mil</option><option>R$ 50 a 100 mil</option><option>Acima de R$ 100 mil</option></select></div>
+                <div class="field"><div class="sim-result"><div><small>Parcela estimada</small><b id="fin-parcela">—</b></div><div class="sm" id="fin-taxa"></div></div></div>
+              </div>
+
+              <div class="cond" data-if="troca=sim">
+                <div class="fsub">Seu carro na troca</div>
+                <div class="field s3"><label for="tr-modelo">Marca e modelo <em>*</em></label><input class="input" id="tr-modelo" name="trModelo" placeholder="Ex.: BMW 320i M Sport" required><span class="err">Informe o modelo.</span></div>
+                <div class="field s2 half-sm"><label for="tr-ano">Ano <em>*</em></label><input class="input mono" id="tr-ano" name="trAno" inputmode="numeric" maxlength="4" placeholder="2021" required><span class="err">Ano inválido.</span></div>
+                <div class="field s1 half-sm"><label for="tr-km">Km</label><input class="input mono" id="tr-km" name="trKm" inputmode="numeric" data-mask="km"></div>
+                <div class="field s3"><label for="tr-placa">Final da placa</label><input class="input mono" id="tr-placa" name="trPlaca" maxlength="1" placeholder="0–9"></div>
+                <div class="field s3"><label for="tr-quit">Está quitado?</label><select class="select" id="tr-quit" name="trQuitado"><option>Sim, quitado</option><option>Não, ainda financiado</option></select></div>
+              </div>
+
+              <div class="field" id="troca-toggle-field">
+                <label class="consent"><input type="checkbox" id="troca-toggle"><span><b>Tenho um carro para dar na troca</b><br>Avaliamos e abatemos do valor.</span></label>
+              </div>
+
+              <div class="fsub">Atendimento</div>
+              <div class="field s3"><label for="contato-horario">Melhor horário para contato</label><select class="select" id="contato-horario" name="horario"><option>Qualquer horário</option><option>Manhã</option><option>Tarde</option><option>Noite</option></select></div>
+              <div class="field s3"><label for="origem">Como conheceu a Apex?</label><select class="select" id="origem" name="origem"><option value="">Selecione</option><option>Instagram</option><option>Google</option><option>Indicação</option><option>Passei na loja</option><option>Outro</option></select></div>
+              <div class="field"><label for="obs">Observações</label><textarea class="input" id="obs" name="obs" placeholder="Ex.: quero saber sobre blindagem, entrega em outro estado, cores…"></textarea></div>
+            </div>
+          </div>
+
+          <!-- PASSO 4 — Revisão -->
+          <div class="fstep" data-step="4">
+            <h2>Revise e envie</h2>
+            <p>Ao enviar, abrimos o WhatsApp com sua proposta completa. É só tocar em “enviar”.</p>
+            <div class="review" id="review"></div>
+            <div class="fgrid review-consent">
+              <label class="consent" id="lgpd-wrap"><input type="checkbox" id="lgpd" required><span>Autorizo a Apex Motors a usar meus dados para contato, envio desta proposta e análise de crédito, conforme a <a class="u-link" href="privacidade.html" target="_blank">Política de Privacidade</a> (LGPD).</span></label>
+            </div>
+          </div>
+
+          <!-- SUCESSO -->
+          <div class="fstep" data-step="5">
+            <div class="success" id="success"></div>
+          </div>
+
+          <div class="form-nav" id="form-nav">
+            <button type="button" class="btn btn-outline" id="back">Voltar</button>
+            <button type="submit" class="btn btn-primary" id="next">Continuar</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="summary" id="summary" aria-label="Resumo"></aside>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/proposta.js"></script>
+</body>
+</html>
